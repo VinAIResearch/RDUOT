@@ -22,15 +22,28 @@
 
 **TLDR**: This work introduces the first robust-to-outlier diffusion and suggests replacing the UOT-based generative model for GAN in DDGAN to learn the backward diffusion process, and demonstrates that the Lipschitz property of divergence in the framework contributes to more stable training convergence.
 
-Details of algorithms, experimental results, and configurations can be found in [our following paper](https://www.semanticscholar.org/paper/A-High-Quality-Robust-Diffusion-Framework-for-Dao-Ta/146988925950eb7ffdb0b854799946cc4b4a7fc8):
+Details of algorithms, experimental results, and configurations can be found in [our following paper](https://arxiv.org/abs/2311.17101):
+<!-- ```bibtex
+@misc{dao2024highqualityrobustdiffusionframework,
+      title={A High-Quality Robust Diffusion Framework for Corrupted Dataset}, 
+      author={Quan Dao and Binh Ta and Tung Pham and Anh Tran},
+      year={2024},
+      eprint={2311.17101},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2311.17101}, 
+}
+``` -->
+
 ```bibtex
-@inproceedings{Dao2023AHR,
-  title={A High-Quality Robust Diffusion Framework for Corrupted Dataset},
-  author={Quan Dao and Binh Ta and Tung Pham and Anh Tran},
-  year={2023},
-  url={https://api.semanticscholar.org/CorpusID:265498823}
+@InProceedings{dao2024highqualityrobustdiffusionframework,
+    title     = {A High-Quality Robust Diffusion Framework for Corrupted Dataset},
+    author    = {Quan Dao and Binh Ta and Tung Pham and Anh Tran},
+    booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+    year      = {2024}
 }
 ```
+
 **Please CITE** our paper whenever this repository is used to help produce published results or incorporated into other software.
 
 ## Environment setup
@@ -44,9 +57,31 @@ pip install -r requirements.txt
 ```
 Pretrained checkpoints can be **downloaded** from this [link](https://drive.google.com/drive/folders/1e7FyELPlqnoHJPpehvDv9Mi6nta-78n4?usp=sharing)
 
-## Set up datasets ##
-We trained on several datasets, including CIFAR10, LSUN Church Outdoor 256, CelebA HQ 256, MNIST. 
+## Set up Datasets ##
 
+We trained our models on several datasets, including:
+
+- **CIFAR-10** 
+- **STL-10**
+- **LSUN Church Outdoor 256**
+- **CelebA HQ 256**
+- **MNIST**
+- **FashionMNIST**
+
+For MNIST, FashionMNIST, CIFAR-10, and STL-10, they will be automatically downloaded in the first time execution. 
+
+For CelebA HQ 256 and LSUN, please check out [here](https://github.com/NVlabs/NVAE#set-up-file-paths-and-data) for dataset preparation.
+
+Once a dataset is downloaded, please put it in `data/` directory as follows:
+```
+data/
+├── cifar-10-batches-py
+├── STL-10
+├── celeba-lmdb
+├── LSUN
+├── mnist 
+└── fashion_mnist
+```
 
 
 ## Training ##
@@ -80,4 +115,4 @@ Code for computing Inception Score is adapted from [here](https://github.com/tsc
 For Improved Precision and Recall, follow the instructions [here](https://github.com/kynkaat/improved-precision-and-recall-metric).
 
 ## Contacts
-If you have any problems, please open an issue in this repository or send an email to [kevinquandao10@gmail.com](mailto:kevinquandao10@gmail.com) or [tahuubinh2001@gmail.com](tahuubinh2001@gmail.com).
+If you have any problems, please open an issue in this repository or send an email to [kevinquandao10@gmail.com](mailto:kevinquandao10@gmail.com) or [tahuubinh2001@gmail.com](mailto:tahuubinh2001@gmail.com).
