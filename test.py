@@ -267,7 +267,7 @@ if __name__ == "__main__":
         default=128,
         help="number of initial channels in denosing model",
     )
-    parser.add_argument("--n_mlp", type=int, default=3, help="number of mlp layers for z")
+    parser.add_argument("--n_mlp", type=int, default=4, help="number of mlp layers for z")
     parser.add_argument("--ch_mult", nargs="+", type=int, help="channel multiplier")
 
     parser.add_argument(
@@ -341,7 +341,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--z_emb_dim", type=int, default=256)
     parser.add_argument("--t_emb_dim", type=int, default=256)
-    parser.add_argument("--batch_size", type=int, default=200, help="sample generating batch size")
+    parser.add_argument("--batch_size", type=int, default=100, help="sample generating batch size")
 
     parser.add_argument("--version", type=str, default="1", help="result version")
     parser.add_argument("--index", type=str, default="1", help="also version, but for the saved results")
@@ -350,8 +350,8 @@ if __name__ == "__main__":
     parser.add_argument("--perturb_percent", type=float, default=0, help="percentage of perturb_data")
 
     # Loss configurations
-    parser.add_argument("--phi1", type=str, default="none", choices=["linear", "kl", "softplus", "chi"])
-    parser.add_argument("--phi2", type=str, default="none", choices=["linear", "kl", "softplus", "chi"])
+    parser.add_argument("--phi1", type=str, default="softplus", choices=["linear", "kl", "softplus", "chi"])
+    parser.add_argument("--phi2", type=str, default="softplus", choices=["linear", "kl", "softplus", "chi"])
     parser.add_argument("--tau", type=float, default=0.001, help="proportion of the cost c")
 
     parser.add_argument(

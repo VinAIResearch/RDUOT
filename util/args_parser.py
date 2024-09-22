@@ -20,9 +20,9 @@ def args_parser():
     parser.add_argument("--beta_max", type=float, default=20.0, help="beta_max for diffusion")
 
     parser.add_argument(
-        "--num_channels_dae", type=int, default=128, help="number of initial channels in denosing model"
+        "--num_channels_dae", type=int, default=64, help="number of initial channels in denosing model"
     )
-    parser.add_argument("--n_mlp", type=int, default=3, help="number of mlp layers for z")
+    parser.add_argument("--n_mlp", type=int, default=4, help="number of mlp layers for z")
     parser.add_argument("--ch_mult", nargs="+", type=int, help="channel multiplier")
     parser.add_argument("--num_res_blocks", type=int, default=2, help="number of resnet blocks per scale")
     parser.add_argument("--attn_resolutions", default=(16,), help="resolution of applying attention")
@@ -72,22 +72,22 @@ def args_parser():
     parser.add_argument("--z_emb_dim", type=int, default=256)
     parser.add_argument("--t_emb_dim", type=int, default=256)
     parser.add_argument("--batch_size", type=int, default=256, help="input batch size")
-    parser.add_argument("--num_epoch", type=int, default=1200)
+    parser.add_argument("--num_epoch", type=int, default=800)
     parser.add_argument("--ngf", type=int, default=64)
 
-    parser.add_argument("--lr_g", type=float, default=1.5e-4, help="learning rate g")
+    parser.add_argument("--lr_g", type=float, default=2e-4, help="learning rate g")
     parser.add_argument("--lr_d", type=float, default=1e-4, help="learning rate d")
     parser.add_argument("--beta1", type=float, default=0.5, help="beta1 for adam")
     parser.add_argument("--beta2", type=float, default=0.9, help="beta2 for adam")
     parser.add_argument("--no_lr_decay", action="store_true", default=False)
 
-    parser.add_argument("--use_ema", action="store_true", default=False, help="use EMA or not")
+    parser.add_argument("--use_ema", type=bool, default=True, help="use EMA or not")
     parser.add_argument("--ema_decay", type=float, default=0.9999, help="decay rate for EMA")
 
     parser.add_argument("--r1_gamma", type=float, default=0.05, help="coef for r1 reg")
     parser.add_argument("--lazy_reg", type=int, default=None, help="lazy regulariation.")
 
-    parser.add_argument("--save_content", action="store_true", default=False)
+    parser.add_argument("--save_content", type=bool, default=True)
     parser.add_argument("--save_content_every", type=int, default=5, help="save content for resuming every x epochs")
     parser.add_argument("--save_ckpt_every", type=int, default=25, help="save ckpt every x epochs")
 
@@ -103,8 +103,8 @@ def args_parser():
     parser.add_argument("--perturb_percent", type=float, default=0, help="percentage of perturb_data")
 
     # Loss configurations
-    parser.add_argument("--phi1", type=str, default="none", choices=["linear", "kl", "softplus", "chi"])
-    parser.add_argument("--phi2", type=str, default="none", choices=["linear", "kl", "softplus", "chi"])
+    parser.add_argument("--phi1", type=str, default="softplus", choices=["linear", "kl", "softplus", "chi"])
+    parser.add_argument("--phi2", type=str, default="softplus", choices=["linear", "kl", "softplus", "chi"])
     parser.add_argument("--tau", type=float, default=0.001, help="proportion of the cost c")
 
     parser.add_argument(
