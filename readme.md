@@ -74,7 +74,7 @@ data/
 Each corrupted dataset consists of two components: clean data and outliers. In our paper, we use **CIFAR-10**, **STL-10**, or **CelebA HQ 256** as the clean data; and any other datasets as the outliers.
 
 ## Training ##
-We use the following commands to train our proposed model.
+We use the following commands to train our proposed model:
 
 #### CIFAR-10 perturbed by MNIST (3%) ####
 
@@ -168,7 +168,7 @@ saved_info/rduot/stl10/bs72/
 
 We use `--epoch_start` (first epoch), `--epoch_end` (last epoch), `--epoch_jump` (number of epochs before the next evaluation) to specify the checkpoint saved at a particular epoch; and `--compute_fid` to calculate FID score. All other hyperparameters have the same meaning as in the training phase.
 
-We use the following commands to train our proposed model.
+We use the following commands to evaluate the models:
 
 #### CIFAR-10 perturbed by MNIST (3%) ####
 
