@@ -5,7 +5,7 @@
 4. [Evaluation](#evaluation)
 5. [Contacts](#contacts)
 
-# Official PyTorch implementation of "A High-Quality Robust Diffusion Framework for Corrupted Dataset" (ECCV'24)
+# Official code for ECCV 2024 paper “A high-quality robust diffusion framework for corrupted dataset”
 
 <div align="center">
   <a href="https://quandao10.github.io/" target="_blank">Quan&nbsp;Dao</a> &emsp;
