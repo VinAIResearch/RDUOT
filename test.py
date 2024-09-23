@@ -264,7 +264,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--num_channels_dae",
         type=int,
-        default=128,
+        default=64,
         help="number of initial channels in denosing model",
     )
     parser.add_argument("--n_mlp", type=int, default=4, help="number of mlp layers for z")

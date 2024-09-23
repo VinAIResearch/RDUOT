@@ -124,23 +124,23 @@ Meaning of hyperparameters:
 
 `--ch_mult`: Channel multiplier per scale
 
-`--num_epoch`: Number of epochs for training
+`--num_epoch` #: Number of epochs for training
 
-`--r1_gamma`: Coefficient for R1 regularization
+`--r1_gamma` #: Coefficient for R1 regularization
 
-`--lr_d`: Learning rate for potential (discriminator) network
+`--lr_d` #: Learning rate for potential (discriminator) network
 
-`--lr_g`: Learning rate for generator network
+`--lr_g` #: Learning rate for generator network
 
-`--lazy_reg`: Number of training iterations for each regularization
+`--lazy_reg` #: Number of training iterations for each regularization
 
-`--num_process_per_node`: Number of GPUs
+`--num_process_per_node` #: Number of GPUs
 
 `--version`: Training version (name of experiment)
 
-`--tau`: Proportion of the cost c in UOT
+`--tau` #: Proportion of the cost c in UOT
 
-`--schedule`: Number of beginning epochs for cosine scheduler
+`--schedule` #: Number of beginning epochs for cosine scheduler
 
 `--perturb_dataset`: Name of the outlier dataset
 
@@ -148,7 +148,7 @@ Meaning of hyperparameters:
 
 `--num_timesteps`: Number of timesteps to generate samples
 
-Note: Remove `--perturb_dataset` and `--perturb_percent` for a clean training dataset.
+Note: Remove `--perturb_dataset` and `--perturb_percent` for a clean training dataset. Hyperparameters with # are only needed in training phase.
 
 
 ## Evaluation ##
@@ -158,12 +158,12 @@ We use `--epoch_start` (first epoch), `--epoch_end` (last epoch), `--epoch_jump`
 
 For example, to test the model trained in the 'CIFAR-10 perturbed by MNIST (5%)' experiment with version 'bs256', run the following command:
 ```
-python3 test.py --dataset cifar10 --ch_mult 1 2 2 2 --version bs256 --compute_fid --epoch_start 1200 --epoch_end 1800 --epoch_jump 25 --perturb_dataset mnist --perturb_percent 3
+python3 test.py --dataset cifar10 --ch_mult 1 2 2 2 --num_timesteps 4 --num_channels_dae 128 --version bs256 --compute_fid --epoch_start 1200 --epoch_end 1800 --epoch_jump 25 --perturb_dataset mnist --perturb_percent 3
 ```
 
 Or to test the model trained in the 'STL-10' experiment with version 'bs64', run the following command: 
 ```
-python3 test.py --dataset stl10 --image_size 64 --ch_mult 1 2 2 2 --version bs64 --compute_fid --epoch_start 1200 --epoch_end 1800 --epoch_jump 25
+python3 test.py --dataset stl10 --image_size 64 --ch_mult 1 2 2 2 --num_timesteps 4 --num_channels_dae 128 --version bs64 --compute_fid --epoch_start 1200 --epoch_end 1800 --epoch_jump 25
 ```
 
 We use the [PyTorch](https://github.com/mseitzer/pytorch-fid) implementation to compute the FID scores, and in particular, codes for computing the FID are adapted from [FastDPM](https://github.com/FengNiMa/FastDPM_pytorch).
