@@ -146,7 +146,7 @@ def sample_and_test(args, epoch_id):
     device = "cuda:0"
     print(f"Epoch {epoch_id}")
 
-    algo = "rdgan"
+    algo = "rduot"
     if args.phi1 == "none":
         algo = "ddgan"
     samples_dir = f"./generated_samples/{algo}/{args.dataset}"

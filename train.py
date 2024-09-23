@@ -154,7 +154,7 @@ def train(rank, gpu, args):
 
     exp = args.exp
 
-    algo = "rdgan"
+    algo = "rduot"
     parent_dir = f"./saved_info/{algo}/{args.dataset}"
 
     if args.perturb_percent > 0:
