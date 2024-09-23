@@ -59,7 +59,7 @@ Pretrained checkpoints can be **downloaded** from this [link](https://drive.goog
 
 ## Set up Datasets ##
 
-We trained our models on several datasets, including:
+We use these datasets to create corrupted datasets:
 
 - **CIFAR-10** 
 - **STL-10**
@@ -83,26 +83,33 @@ data/
 └── fashion_mnist
 ```
 
+Each corrupted dataset consists of two components: clean data and outliers. In our paper, we use **CIFAR-10**, **STL-10**, or **CelebA HQ 256** as the clean data; and any other datasets as the outliers.
 
 ## Training ##
 We use the following commands to train our proposed model.
 
-#### CIFAR-10 perturbed by MNIST (5%) ####
+#### CIFAR-10 perturbed by MNIST (3%) ####
 
 ```
-python3 train.py --dataset cifar10 --batch_size 256 --num_channels_dae 128 --num_epoch 1800 --r1_gamma 0.02 --lr_d 1.25e-4 --lr_g 1.6e-4 --lazy_reg 15 --num_process_per_node 1 --ch_mult 1 2 2 2 --version bs256 --perturb_dataset mnist --perturb_percent 5
+python3 train.py --dataset cifar10 --batch_size 256 --num_channels_dae 128 --num_epoch 1800 --r1_gamma 0.02 --lr_d 1.25e-4 --lr_g 1.6e-4 --lazy_reg 15 --ch_mult 1 2 2 2 --version bs256 --perturb_dataset mnist --perturb_percent 3
 ```
 
 #### STL-10 ####
 
 ```
-python3 train_rdgan.py --dataset stl10 --image_size 64 --num_channels_dae 128 --ch_mult 1 2 2 2 --batch_size 72 --num_epoch 1800 --r1_gamma 0.02 --lr_d 1.25e-4 --lr_g 1.6e-4 --lazy_reg 15 --num_process_per_node 1 --version bs64 --tau 1e-4
+python3 train_rdgan.py --dataset stl10 --image_size 64 --num_channels_dae 128 --ch_mult 1 2 2 2 --batch_size 72 --num_epoch 1800 --r1_gamma 0.02 --lr_d 1.25e-4 --lr_g 1.6e-4 --lazy_reg 15 --version bs64 --tau 1e-4
 ```
 
 #### CelebA HQ 256 ####
 
 ```
 CUDA_VISIBLE_DEVICES=0,1 python3 train_rdgan.py --image_size 256 --dataset celeba_hq --num_timesteps 2 --batch_size 12 --r1_gamma 2.0 --lazy_reg 10 --num_process_per_node 2 --ch_mult 1 1 2 2 4 4 --version bs12 --tau 1e-7 --schedule 800
+```
+
+#### CelebA-64 perturbed by FashionMNIST *(or LSUN Church)* (5%) ####
+
+```
+python3 train_rdgan.py --dataset celeba_hq --image_size 64 --num_channels_dae 96 --num_timesteps 2 --batch_size 72 --num_epoch 800 --r1_gamma 0.02 --lr_d 1e-4 --lr_g 1.6e-4 --lazy_reg 15 --ch_mult 1 2 2 2 4 --perturb_dataset fashion_mnist (𝑜𝑟 𝑙𝑠𝑢𝑛) --perturb_percent 5 --tau 0.0003
 ```
 
 Meaning of hyperparameters:
@@ -151,7 +158,7 @@ We use `--epoch_start` (first epoch), `--epoch_end` (last epoch), `--epoch_jump`
 
 For example, to test the model trained in the 'CIFAR-10 perturbed by MNIST (5%)' experiment with version 'bs256', run the following command:
 ```
-python3 test.py --dataset cifar10 --ch_mult 1 2 2 2 --version bs256 --compute_fid --epoch_start 1200 --epoch_end 1800 --epoch_jump 25 --perturb_dataset mnist --perturb_percent 5
+python3 test.py --dataset cifar10 --ch_mult 1 2 2 2 --version bs256 --compute_fid --epoch_start 1200 --epoch_end 1800 --epoch_jump 25 --perturb_dataset mnist --perturb_percent 3
 ```
 
 Or to test the model trained in the 'STL-10' experiment with version 'bs64', run the following command: 
