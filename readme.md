@@ -25,7 +25,7 @@
 Details of algorithms, experimental results, and configurations can be found in [our following paper](https://arxiv.org/abs/2311.17101):
 
 ```bibtex
-@InProceedings{dao2024highqualityrobustdiffusionframework,
+@InProceedings{dao2024rduot,
     title     = {A High-Quality Robust Diffusion Framework for Corrupted Dataset},
     author    = {Dao, Quan and Ta, Binh and Pham, Tung and Tran, Anh},
     booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
