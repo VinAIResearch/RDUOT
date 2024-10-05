@@ -27,7 +27,7 @@ Details of algorithms, experimental results, and configurations can be found in 
 ```bibtex
 @InProceedings{dao2024highqualityrobustdiffusionframework,
     title     = {A High-Quality Robust Diffusion Framework for Corrupted Dataset},
-    author    = {Quan Dao and Binh Ta and Tung Pham and Anh Tran},
+    author    = {Dao, Quan and Ta, Binh and Pham, Tung and Tran, Anh},
     booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
     year      = {2024}
 }
